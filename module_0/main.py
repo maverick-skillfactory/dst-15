@@ -26,6 +26,21 @@ def binary_search_recursive(number, count=0, start=1, end=101):
             return binary_search_recursive(number, count, start, predict)
 
 
+def binary_search_cycled(number):
+    count = 0
+    start = 1
+    end = 101
+    while True:
+        count += 1
+        predict = start + int((end - start) / 2)
+        if number == predict:
+            return count
+        elif number > predict:
+            start = predict
+        else:
+            end = predict
+
+
 def score_game(game_core):
     """Запускает игру 1000 раз.
 
@@ -44,3 +59,4 @@ def score_game(game_core):
 
 # запускаем
 score_game(binary_search_recursive)
+score_game(binary_search_cycled)
